@@ -5,58 +5,10 @@ fn main(){let q:&[u8]=&[
 ];
 
     println!("fn main(){{let q:&[u8]=&[");
-    let area = (q.len() *3);
-    let radius = (area as f64 / std::f64::consts::PI).sqrt() as i32;
+    let area = q.len();
+    let radius = (area as f64 / std::f64::consts::PI).sqrt() as i32 + 1;
     let mut bounds: Vec<(i32, i32)> = Vec::new();
 
-    // let xc = radius;
-    // let yc = radius;
-    // let rx = radius;
-    // let ry = radius;
-    // let mut x = 0;
-    // let mut y = ry;
-    // let mut p = (ry*ry)-(rx*rx*ry)+((rx*rx)/4);
-    // while((2*x*ry*ry)<(2*y*rx*rx))
-    // {
-    //     bounds.push((xc+x,yc-y));
-    //     bounds.push((xc-x,yc+y));
-    //     bounds.push((xc+x,yc+y));
-    //     bounds.push((xc-x,yc-y));
-
-    //     if(p<0)
-    //     {
-    //         x=x+1;
-    //         p=p+(2*ry*ry*x)+(ry*ry);
-    //     }
-    //     else
-    //     {
-    //         x=x+1;
-    //         y=y-1;
-    //         p=p+(2*ry*ry*x+ry*ry)-(2*rx*rx*y);
-    //     }
-    // }
-    // p=((x as f64+0.5)*(x as f64+0.5)) as i32 *ry*ry+(y-1)*(y-1)*rx*rx-rx*rx*ry*ry;
-
-    // while(y>=0)
-    // {
-    //     bounds.push((xc+x,yc-y));
-    //     bounds.push((xc-x,yc+y));
-    //     bounds.push((xc+x,yc+y));
-    //     bounds.push((xc-x,yc-y));
-
-    //     if(p>0)
-    //     {
-    //         y=y-1;
-    //         p=p-(2*rx*rx*y)+(rx*rx);
-
-    //     }
-    //     else
-    //     {
-    //         y=y-1;
-    //         x=x+1;
-    //         p=p+(2*ry*ry*x)-(2*rx*rx*y)-(rx*rx);
-    //     }
-    // }
 
     let mut x0 = radius;
     let mut y0 = radius;
@@ -101,22 +53,27 @@ fn main(){let q:&[u8]=&[
         total += num;
         print!("{:04}  ", num);
         for _ in 0..min {
-            print!(" ");
+            print!("   ");
         }
-        for _ in 0..(num/3) {
-            print!("{:02},", t.next().unwrap());
+        for _ in 0..(num) {
+            if let Some(v) = t.next() {
+                print!("{:02},", v);
+            }
         }
         print!("\n");
     }
-    println!("{:#?}", q.len()*3);
+    while let Some(v) = t.next() {
+        print!("{:02},", v);
+    }
+    println!("\n{:#?}", q.len()*3);
     println!("{:#?}", total);
 
     // once you have the bounds, subtract xstart from xend to get number of elements to paste
 
-    // for n in q.iter() {
-    //     print!("{}", (*n + 32) as char);
-    // }
-    // print!("\n");
+    for n in q.iter() {
+        print!("{}", (*n + 32) as char);
+    }
+    print!("\n");
 
     // encode();
 }
@@ -137,3 +94,52 @@ fn encode() {
 //20:57:48 < cythrawll> Kirjava you can use it to figure out the bounds of the circle
 // 20:58:00 < cythrawll> then once you have that for each row, you can easily fill that right?
 //
+//
+//     let xc = radius;
+//     let yc = radius;
+//     let rx = radius;
+//     let ry = radius;
+//     let mut x = 0;
+//     let mut y = ry;
+//     let mut p = (ry*ry)-(rx*rx*ry)+((rx*rx)/4);
+//     while((2*x*ry*ry)<(2*y*rx*rx))
+//     {
+//         bounds.push((xc+x,yc-y));
+//         bounds.push((xc-x,yc+y));
+//         bounds.push((xc+x,yc+y));
+//         bounds.push((xc-x,yc-y));
+
+//         if(p<0)
+//         {
+//             x=x+1;
+//             p=p+(2*ry*ry*x)+(ry*ry);
+//         }
+//         else
+//         {
+//             x=x+1;
+//             y=y-1;
+//             p=p+(2*ry*ry*x+ry*ry)-(2*rx*rx*y);
+//         }
+//     }
+//     p=((x as f64+0.5)*(x as f64+0.5)) as i32 *ry*ry+(y-1)*(y-1)*rx*rx-rx*rx*ry*ry;
+
+//     while(y>=0)
+//     {
+//         bounds.push((xc+x,yc-y));
+//         bounds.push((xc-x,yc+y));
+//         bounds.push((xc+x,yc+y));
+//         bounds.push((xc-x,yc-y));
+
+//         if(p>0)
+//         {
+//             y=y-1;
+//             p=p-(2*rx*rx*y)+(rx*rx);
+
+//         }
+//         else
+//         {
+//             y=y-1;
+//             x=x+1;
+//             p=p+(2*ry*ry*x)-(2*rx*rx*y)-(rx*rx);
+//         }
+//     }
