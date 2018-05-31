@@ -65,11 +65,8 @@ fn main(){let q:&[u8]=&[
     print!("\n");
 
     // encode();
-} // github/kirjavascript
+}
 
-// circle-quine
-
-/// increase radius to get more code in
 fn encode() {
     let s = String::from(r###""###);
     let c = s.as_bytes().iter().map(|x| x - 32).collect::<Vec<u8>>();
