@@ -6,7 +6,7 @@ fn main(){let q:&[u8]=&[
 
     println!("{}fn main(){{let q:&[u8]=&[", String::from_utf8(vec![b' '; 51]).unwrap());
     let area = q.len();
-    let radius = (area as f64 / std::f64::consts::PI).sqrt() as i32 + 1;
+    let radius = (area as f64 / std::f64::consts::PI).sqrt() as i32 + 3;
     let mut bounds: Vec<(i32, i32)> = Vec::new();
 
     let x0 = radius;
@@ -42,7 +42,7 @@ fn main(){let q:&[u8]=&[
         }
     }
     let mut t = q.iter().cloned();
-    for y in 1..radius*2 {
+    'o: for y in 1..radius*2 {
         let l = bounds.iter().filter(|x| x.1 == y).map(|x| x.0).collect::<Vec<i32>>();
         let max = l.iter().cloned().fold(0, i32::max);
         let min = l.iter().cloned().fold(1000, i32::min);
@@ -53,6 +53,9 @@ fn main(){let q:&[u8]=&[
         for _ in 0..num {
             if let Some(v) = t.next() {
                 print!("{:02},", v);
+            }
+            else {
+                break 'o;
             }
         }
         print!("\n");
