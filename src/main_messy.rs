@@ -9,8 +9,6 @@ fn main(){let q:&[u8]=&[
     let radius = (area as f64 / std::f64::consts::PI).sqrt() as i32 + 3;
     let mut bounds: Vec<(i32, i32)> = Vec::new();
 
-    let x0 = radius;
-    let y0 = radius;
     let mut x = radius-1;
     let mut y = 0;
     let mut dx = 1;
@@ -18,14 +16,14 @@ fn main(){let q:&[u8]=&[
     let mut err = dx - (radius << 1);
     while x >= y
     {
-        bounds.push((x0 + x, y0 + y));
-        bounds.push((x0 + y, y0 + x));
-        bounds.push((x0 - y, y0 + x));
-        bounds.push((x0 - x, y0 + y));
-        bounds.push((x0 - x, y0 - y));
-        bounds.push((x0 - y, y0 - x));
-        bounds.push((x0 + y, y0 - x));
-        bounds.push((x0 + x, y0 - y));
+        bounds.push((radius + x, radius + y));
+        bounds.push((radius + y, radius + x));
+        bounds.push((radius - y, radius + x));
+        bounds.push((radius - x, radius + y));
+        bounds.push((radius - x, radius - y));
+        bounds.push((radius - y, radius - x));
+        bounds.push((radius + y, radius - x));
+        bounds.push((radius + x, radius - y));
 
         if err <= 0
         {
