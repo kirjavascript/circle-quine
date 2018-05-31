@@ -16,7 +16,7 @@ fn main(){let q:&[u8]=&[
     let mut dx = 1;
     let mut dy = 1;
     let mut err = dx - (radius << 1);
-    while (x >= y)
+    while x >= y
     {
         bounds.push((x0 + x, y0 + y));
         bounds.push((x0 + y, y0 + x));
@@ -27,48 +27,39 @@ fn main(){let q:&[u8]=&[
         bounds.push((x0 + y, y0 - x));
         bounds.push((x0 + x, y0 - y));
 
-        if (err <= 0)
+        if err <= 0
         {
             y += 1;
             err += dy;
             dy += 2;
         }
 
-        if (err > 0)
+        if err > 0
         {
             x -= 1;
             dx += 2;
             err += dx - (radius << 1);
         }
     }
-    let mut total = 0;
     let mut t = q.iter().cloned();
     for y in 1..radius*2 {
         let l = bounds.iter().filter(|x| x.1 == y).map(|x| x.0).collect::<Vec<i32>>();
         let max = l.iter().cloned().fold(0, i32::max);
         let min = l.iter().cloned().fold(1000, i32::min);
-        // println!("{} {} {}", max, min, y);
-        let num = (max - min);
-        total += num;
-        // print!("{:04}  ", num);
+        let num = max - min;
         for _ in 0..min {
             print!("   ");
         }
-        for _ in 0..(num) {
+        for _ in 0..num {
             if let Some(v) = t.next() {
                 print!("{:02},", v);
             }
         }
         print!("\n");
     }
-    while let Some(v) = t.next() {
-        print!("{:02},", v);
-    }
-    println!("\n{:#?}", q.len());
-    println!("{:#?}", total);
-
-    for n in q.iter() {
-        print!("{}", (*n + 32) as char);
+    for n in q.iter(){
+        print!("{}",(*n+32)as char);
+        // print!("{}",(if *n==64{10}else{*n+32}) as char); // @ == NL
     }
     print!("\n");
 
@@ -79,7 +70,7 @@ fn main(){let q:&[u8]=&[
 
 /// increase radius to get more code in
 fn encode() {
-    let s = String::from(r###"println!("fn main(){{let q:&[u8]=&["); let area = (q.len() *3); let radius = (area as f64 / std::f64::consts::PI).sqrt() as i32; let mut bounds: Vec<(i32, i32)> = Vec::new(); let xc = radius; let yc = radius; let rx = radius; let ry = radius; let mut x = 0; let mut y = ry; let mut p = (ry*ry)-(rx*rx*ry)+((rx*rx)/4); while((2*x*ry*ry)<(2*y*rx*rx)) { bounds.push((xc+x,yc-y)); bounds.push((xc-x,yc+y)); bounds.push((xc+x,yc+y)); bounds.push((xc-x,yc-y)); if(p<0) { x=x+1; p=p+(2*ry*ry*x)+(ry*ry); } else { x=x+1; y=y-1; p=p+(2*ry*ry*x+ry*ry)-(2*rx*rx*y); } } p=((x as f64+0.5)*(x as f64+0.5)) as i32 *ry*ry+(y-1)*(y-1)*rx*rx-rx*rx*ry*ry; while(y>=0) { bounds.push((xc+x,yc-y)); bounds.push((xc-x,yc+y)); bounds.push((xc+x,yc+y)); bounds.push((xc-x,yc-y)); if(p>0) { y=y-1; p=p-(2*rx*rx*y)+(rx*rx); } else { y=y-1; x=x+1; p=p+(2*ry*ry*x)-(2*rx*rx*y)-(rx*rx); } } let mut total = 0; let mut t = q.iter().cloned(); for y in 1..radius*2 { let l = bounds.iter().filter(|x| x.1 == y).map(|x| x.0).collect::<Vec<i32>>(); let max = l.iter().cloned().fold(0, i32::max); let min = l.iter().cloned().fold(1000, i32::min); println!("{} {} {}", max, min, y); let num = (max - min); total += num; print!("{:04}  ", num); for _ in 0..min { print!(" "); } for _ in 0..(num/3) { print!("{:02},", t.next().unwrap()); } print!("\n"); }"###);
+    let s = String::from(r###""###);
     let c = s.as_bytes().iter().map(|x| x - 32).collect::<Vec<u8>>();
     for x in c.iter() {
         print!("{:02},", x);

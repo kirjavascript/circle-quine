@@ -28,8 +28,8 @@
             29,84,14,78,69,88,84,08,09,91,80,82,73,78,84,01,08,02,91,26,16,18,93,12,02,12,
                86,09,27,93,93,80,82,73,78,84,01,08,02,60,78,02,09,27,93,70,79,82,00,78,
                00,73,78,00,81,14,73,84,69,82,08,09,00,91,80,82,73,78,84,01,08,02,91,93,
-                     02,12,08,10,78,11,19,18,09,00,65,83,00,67,72,65,82,09,27,93,
-                        80,82,73,78,84,01,08,02,60,78,02,09,27,93,00,15,15,00,
-                           71,73,84,72,85,66,15,75,73,82,74,65,86,65,83,67,
-                                    82,73,80,84,
-];println!("{}fn main(){{let q:&[u8]=&[",String::from_utf8(vec![b' ';39]).unwrap());let r=(q.len()as f64/std::f64::consts::PI).sqrt()as i32+1;let mut b:Vec<(i32, i32)>=Vec::new();let r=r;let r=r;let mut x=r-1;let mut y=0;let mut k=1;let mut j=1;let mut e=k-(r<<1);while x>=y{b.push((r+x,r+y));b.push((r+y,r+x));b.push((r-y,r+x));b.push((r-x,r+y));b.push((r-x,r-y));b.push((r-y,r-x));b.push((r+y,r-x));b.push((r+x,r-y));if e<=0{y+=1;e+=j;j+=2;}if e>0{x-=1;k+=2;e+=k-(r<<1);}}let mut t=q.iter(); for y in 1..r*2 {let l:Vec<i32>=b.iter().filter(|x|x.1==y).map(|x|x.0).collect();let x=l.iter().cloned().fold(0,i32::max);let n=l.iter().cloned().fold(999,i32::min);let m=x-n;for _ in 0..n{print!("   ");}for _ in 0..m{if let Some(v)=t.next(){print!("{:02},",v);}}print!("\n");}for n in q.iter() {print!("{}",(*n+32) as char);}print!("\n");} // github/kirjavascript
+                     02,12,08,73,70,00,10,78,29,29,19,18,91,17,16,93,69,76,83,69,
+                        91,10,78,11,19,18,93,09,00,65,83,00,67,72,65,82,09,27,
+                           93,80,82,73,78,84,01,08,02,60,78,02,09,27,93,
+
+];println!("{}fn main(){{let q:&[u8]=&[",String::from_utf8(vec![b' ';39]).unwrap());let r=(q.len()as f64/std::f64::consts::PI).sqrt()as i32+1;let mut b:Vec<(i32, i32)>=Vec::new();let r=r;let r=r;let mut x=r-1;let mut y=0;let mut k=1;let mut j=1;let mut e=k-(r<<1);while x>=y{b.push((r+x,r+y));b.push((r+y,r+x));b.push((r-y,r+x));b.push((r-x,r+y));b.push((r-x,r-y));b.push((r-y,r-x));b.push((r+y,r-x));b.push((r+x,r-y));if e<=0{y+=1;e+=j;j+=2;}if e>0{x-=1;k+=2;e+=k-(r<<1);}}let mut t=q.iter(); for y in 1..r*2 {let l:Vec<i32>=b.iter().filter(|x|x.1==y).map(|x|x.0).collect();let x=l.iter().cloned().fold(0,i32::max);let n=l.iter().cloned().fold(999,i32::min);let m=x-n;for _ in 0..n{print!("   ");}for _ in 0..m{if let Some(v)=t.next(){print!("{:02},",v);}}print!("\n");}for n in q.iter() {print!("{}",(if *n==32{10}else{*n+32}) as char);}print!("\n");}
