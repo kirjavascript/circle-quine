@@ -40,12 +40,3 @@
                         ("   ");}for _ in 0..m{ if let Some(v) = t .next(){print!("{:02},",v);} else{ break
                             'o;}} print!("\n");} for n in q.iter() { print!("{}", (if *n==32{10} else
                                  {*n+32}) as char);}print!("\n");} // github.com/kirjavascript
-
-fn encode() {
-    let s = String::from(r###"@       ];println!("{}fn main(){{let q:&[u8]=&[", String::from_utf8(vec![b' '; 54]).unwrap());let r=(q.len()as f64/std::f64::@          consts::PI).sqrt()as i32+4;let mut b: Vec<(i32, i32) >= Vec::new(); /*    ooer   */ let mut x=r-1; let mut y=0;@          let mut k=1;let mut j=1;let mut e=k -(r<<1);while x>=y{b.push((r+x,r+y));b.push((r+y,r+x)); b.push((r-y,r+x)@             );b.push((r-x, r+y));b.push((r-x,r-y));b.push((r-y,r-x)); b.push((r+y,r-x));b.push((r+x,r-y)); if e<=0{@                y+=1;e+=j;j+=2;}if e>0 {x-=1;k+=2;e+=k-(r<<1);}}let mut t=q.iter();'o:for y in 1..r*2 { let l: Vec@                   <i32>=b.iter().filter(|x| x.1==y) .map(|x| x.0).  collect();let x = l.iter().cloned().fold(0,@                     i32::max); let n =l.iter().cloned().fold(999, i32::min);let m=x-n; for _ in 0..n { print!@                        ("   ");}for _ in 0..m{ if let Some(v) = t .next(){print!("{:02},",v);} else{ break@                            'o;}} print!("\n");} for n in q.iter() { print!("{}", (if *n==32{10} else@                                 {*n+32}) as char);}print!("\n");} // github.com/kirjavascript"###);
-    let c = s.as_bytes().iter().map(|x| x - 32).collect::<Vec<u8>>();
-    for x in c.iter() {
-        print!("{:02},", x);
-    }
-    print!("\n");
-}
